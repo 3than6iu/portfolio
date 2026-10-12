@@ -88,6 +88,10 @@ th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)
 .entry .shots img{cursor:zoom-in;border:1px solid var(--line)}
 .entry .shots figure{margin:0}
 .entry .shots figcaption{font-size:12px;color:var(--dim);margin-top:4px}
+.entry .thumbs{display:flex;flex-wrap:wrap;gap:12px}
+.entry .thumbs figure{margin:0;width:180px}
+.entry .thumbs img{width:180px;height:120px;object-fit:cover;cursor:zoom-in}
+.entry .thumbs figcaption{font-size:12px;color:var(--dim);margin-top:4px}
 .entry .mb{margin-top:20px;font-size:13px;color:var(--dim)}
 @media (max-width:600px){.entry .shots{grid-template-columns:1fr}}
 
@@ -221,6 +225,11 @@ const SITE = {
         { src: "images/journal/2026-10-12-2.jpg", caption: "Testing the layout in a local preview before publishing." },
         { src: "images/journal/2026-10-12-3.jpg", caption: "Researching how to publish a website by connecting Claude to GitHub before trying it myself." }
       ],
+      /* small versions of gallery photos, as proof of shooting */
+      photos: [
+        { src: "images/gallery/2026-10-weekend-vegetable-stall.jpg", caption: "Weekend market, October 2026" },
+        { src: "images/gallery/2026-09-igem-outreach-app.jpg", caption: "iGEM outreach, September 2026" }
+      ],
       worked: "I built and published my personal website for VLD, with Claude helping on the code. I'd missed last week's session and was behind, so I got the whole thing done in this lesson: home, gallery, course log, reflection journal, learner bio and evidence, all on one page with a dark theme. By the end of class I had sent my teacher the live link along with this journal. Outside class, I also went out over the weekend on my own time for my first street photography shoot for the course.",
       hard: "Publishing the site. I had never put a website online and didn't know where to start. First I researched it myself: I searched how to publish a website by connecting Claude to GitHub and looked through several YouTube tutorials on deploying and hosting a site. That showed me the route that worked, which was connecting Claude to my GitHub account: once I'd logged in to GitHub myself, Claude could push the site to GitHub Pages directly. I now understand the steps (repository, then GitHub Pages, then a public link), so I can update the site on my own every week.",
       ran: "100. I knew I was behind, so I worked hard for the whole lesson, stayed focused, and didn't distract anyone. Beyond class time, I took the initiative to go out shooting over the weekend without being asked, which is the kind of independent practice this course is about. My first photograph is now in the gallery. Learning to publish a website is also a skill I'll keep using well beyond this course.",
@@ -309,6 +318,9 @@ $("journalList").innerHTML = SITE.journal.map((e, i) => `
       ${e.images && e.images.length ? `<div class="shots">${e.images.map(i => `
         <figure><img src="${esc(i.src)}" alt="${esc(i.caption)}" loading="lazy" data-cap="${esc(i.caption)}">
         <figcaption>${esc(i.caption)}</figcaption></figure>`).join("")}</div>` : ""}
+      ${e.photos && e.photos.length ? `<p class="label" style="margin:28px 0 10px">Photos I took</p><div class="thumbs">${e.photos.map(i => `
+        <figure><img src="${esc(i.src)}" alt="${esc(i.caption)}" loading="lazy" data-cap="${esc(i.caption)}">
+        <figcaption>${esc(i.caption)}</figcaption></figure>`).join("")}</div>` : ""}
       <p class="mb">${e.teacher == null ? "ManageBac score not posted yet."
         : +e.teacher === +e.score ? `ManageBac ${esc(e.teacher)}: my teacher read the session the same way.`
         : `ManageBac ${esc(e.teacher)} vs. my ${esc(e.score)}: worth asking why.`}</p>
@@ -325,7 +337,7 @@ addEventListener("hashchange", hashOpen); addEventListener("load", () => setTime
 /* lightbox */
 const lb = $("lb");
 document.addEventListener("click", e => {
-  const img = e.target.closest(".gallery img, .shots img");
+  const img = e.target.closest(".gallery img, .shots img, .thumbs img");
   if (img) { lb.querySelector("img").src = img.src; lb.querySelector("p").textContent = img.dataset.cap || ""; lb.classList.add("on"); }
   else if (e.target.closest("#lb")) lb.classList.remove("on");
 });
