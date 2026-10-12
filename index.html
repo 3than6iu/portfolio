@@ -74,8 +74,7 @@ th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)
 .journal details:last-child{border-bottom:1px solid var(--line)}
 .journal summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;padding:18px 0}
 .journal summary::-webkit-details-marker{display:none}
-.journal summary .wk{font-family:var(--serif);font-size:24px;min-width:4.2em}
-.journal summary .date{color:var(--dim);min-width:8em}
+.journal summary .wk{font-family:var(--serif);font-size:24px;min-width:6.4em}
 .journal summary .course{flex:1;min-width:14em}
 .journal summary .score{font-size:13px;color:var(--dim);white-space:nowrap}
 .journal summary::after{content:"+";font-size:20px;line-height:1;margin-left:auto}
@@ -152,7 +151,7 @@ footer{padding:32px 0 48px;color:var(--dim);font-size:13px}
 
   <section id="journal"><div class="wrap">
     <h2>Reflection Journal</h2>
-    <p class="sub">One dated entry after every session, using the same four questions each time. Click a week to open it.</p>
+    <p class="sub">One dated entry after every session, using the same four questions each time. Click a date to open it.</p>
     <div class="journal" id="journalList"></div>
   </div></section>
 
@@ -213,37 +212,35 @@ const SITE = {
      teacher = ManageBac score once posted, null until then.          */
   journal: [
     {
-      week: "03",
       date: "12 Oct 2026",
       course: "Street Photography: Foundations & Creative Mindsets, personal website",
       score: 100,
       teacher: null,
       images: [
-        { src: "images/journal/week03-1.jpg", caption: "The finished site, live on GitHub Pages: dark theme, with the gallery and journal sections." },
-        { src: "images/journal/week03-2.jpg", caption: "Testing the layout in a local preview before publishing." }
+        { src: "images/journal/2026-10-12-1.jpg", caption: "The finished site, live on GitHub Pages: dark theme, with the gallery and journal sections." },
+        { src: "images/journal/2026-10-12-2.jpg", caption: "Testing the layout in a local preview before publishing." },
+        { src: "images/journal/2026-10-12-3.jpg", caption: "Researching how to publish a website by connecting Claude to GitHub before trying it myself." }
       ],
       worked: "I built and published my personal website for VLD, with Claude helping on the code. I'd missed last week's session and was behind, so I got the whole thing done in this lesson: home, gallery, course log, reflection journal, learner bio and evidence, all on one page with a dark theme. By the end of class I had sent my teacher the live link along with this journal. Outside class, I also went out over the weekend on my own time for my first street photography shoot for the course.",
-      hard: "Publishing the site. I had never put a website online and didn't know where to start. What solved it was connecting Claude to my GitHub account: once I'd logged in to GitHub myself, Claude could push the site to GitHub Pages directly. I now understand the steps (repository, then GitHub Pages, then a public link), so I can update the site on my own every week.",
+      hard: "Publishing the site. I had never put a website online and didn't know where to start. First I researched it myself: I searched how to publish a website by connecting Claude to GitHub and looked through several YouTube tutorials on deploying and hosting a site. That showed me the route that worked, which was connecting Claude to my GitHub account: once I'd logged in to GitHub myself, Claude could push the site to GitHub Pages directly. I now understand the steps (repository, then GitHub Pages, then a public link), so I can update the site on my own every week.",
       ran: "100. I knew I was behind, so I worked hard for the whole lesson, stayed focused, and didn't distract anyone. Beyond class time, I took the initiative to go out shooting over the weekend without being asked, which is the kind of independent practice this course is about. My first photograph is now in the gallery. Learning to publish a website is also a skill I'll keep using well beyond this course.",
       next: "Catch up before the next lesson starts, not during it. I'll finish the rest of Module 1 (the remaining videos and the quiz) at home this week, so next session I start level with everyone else instead of spending it making up old work. I'll also keep shooting on weekends so every entry has new photos in it."
     },
     {
-      week: "02",
       date: "21 Sep 2026",
       course: "Street Photography: Foundations & Creative Mindsets, Module 1",
       score: 79,
       teacher: null,
       images: [
-        { src: "images/journal/week02-1.jpg", caption: "Introduction, the Project Instructions reading, and the New Discussion Prompt all complete — today's goal of 3 learning items met." },
-        { src: "images/journal/week02-2.jpg", caption: "5:18 into “Why is Street Photography so Appealing?”, watched at 1.25x." }
+        { src: "images/journal/2026-09-21-1.jpg", caption: "Introduction, the Project Instructions reading, and the New Discussion Prompt all complete — today's goal of 3 learning items met." },
+        { src: "images/journal/2026-09-21-2.jpg", caption: "5:18 into “Why is Street Photography so Appealing?”, watched at 1.25x." }
       ],
       worked: "Module 1, “Welcome to the World of Street Photography.” Finished Introduction, Class Overview & Definition, the Project Instructions reading, and the New Discussion Prompt. I’m 5:18 into the 7:04 “Why is Street Photography so Appealing?” video, watching at 1.25x. “Why Do It?”, “What is the Goal of This Project?”, “Who Am I?”, and the Module 1 Quiz are still open.",
       hard: "Nothing here was intellectually hard — it’s orientation content. The real friction was staying with it instead of skimming to get to a task: I read the whole Project Instructions page rather than jumping to the video, and even at 1.25x I didn’t skip ahead past sections.",
       ran: "79. I worked through four items without being told and I’m most of the way through a fifth. Not higher, since I ran everything at 1.25x rather than deciding how to actually engage with the material, and the module still isn’t finished.",
-      next: "Finish “Why is Street Photography so Appealing?” at normal speed, get through “Why Do It?”, “What is the Goal of This Project?”, “Who Am I?”, and the quiz, then go out for a first, low-pressure shoot — so week 3’s entry has an actual frame in it."
+      next: "Finish “Why is Street Photography so Appealing?” at normal speed, get through “Why Do It?”, “What is the Goal of This Project?”, “Who Am I?”, and the quiz, then go out for a first, low-pressure shoot — so my next entry has an actual frame in it."
     },
     {
-      week: "01",
       date: "21 Sep 2026",
       course: "Street Photography: Foundations & Creative Mindsets, Module 1",
       score: 79,
@@ -266,7 +263,7 @@ const SITE = {
   ],
 
   evidence: [
-    ["Progress", "Coursera progress screenshots are attached to each journal entry (see Week 02)."],
+    ["Progress", "Coursera progress screenshots are attached to each journal entry (see the 21 Sep 2026 entry)."],
     ["Certificate", "Will be added once Course 1 is complete."],
     ["Final project", "“Capture Emotion in Motion”: a 5-image photo essay, added here once submitted."]
   ]
@@ -299,16 +296,15 @@ const Q = [
   ["ran",    "3. How well did I run my own learning today?"],
   ["next",   "4. What will I do differently or keep doing next session?"]
 ];
-$("journalList").innerHTML = SITE.journal.map(e => `
-  <details id="week-${esc(e.week)}">
+$("journalList").innerHTML = SITE.journal.map((e, i) => `
+  <details id="entry-${SITE.journal.length - i}">
     <summary>
-      <span class="wk">Week ${esc(e.week)}</span>
-      <span class="date">${esc(e.date)}</span>
+      <span class="wk">${esc(e.date)}</span>
       <span class="course">${esc(e.course)}</span>
       <span class="score">Self ${esc(e.score)} &middot; ManageBac ${e.teacher != null ? esc(e.teacher) : "&mdash;"}</span>
     </summary>
     <div class="entry">
-      <p class="head">Week ${esc(e.week)} &middot; ${esc(e.date)} &middot; Course: ${esc(e.course)}</p>
+      <p class="head">${esc(e.date)} &middot; Course: ${esc(e.course)}</p>
       ${Q.map(([k, q]) => `<h3>${q}</h3><p>${esc(e[k])}</p>`).join("")}
       ${e.images && e.images.length ? `<div class="shots">${e.images.map(i => `
         <figure><img src="${esc(i.src)}" alt="${esc(i.caption)}" loading="lazy" data-cap="${esc(i.caption)}">
@@ -322,9 +318,9 @@ $("journalList").innerHTML = SITE.journal.map(e => `
 $("bioList").innerHTML = SITE.bio.map(([q, a]) => `<dt>${esc(q)}</dt><dd>${txt(a)}</dd>`).join("");
 $("evidenceList").innerHTML = SITE.evidence.map(([k, v]) => `<li><span class="label">${esc(k)}</span><span>${esc(v)}</span></li>`).join("");
 
-/* open a journal entry from a link like #week-02 */
-const hashOpen = () => { const d = document.querySelector(location.hash.startsWith("#week-") ? location.hash : null); if (d) d.open = true; };
-addEventListener("hashchange", hashOpen); hashOpen();
+/* open a journal entry from a link like #entry-3 */
+const hashOpen = () => { const d = document.querySelector(location.hash.startsWith("#entry-") ? location.hash : null); if (d) { d.open = true; d.scrollIntoView({ behavior: "instant" }); } };
+addEventListener("hashchange", hashOpen); addEventListener("load", () => setTimeout(hashOpen, 50));
 
 /* lightbox */
 const lb = $("lb");
