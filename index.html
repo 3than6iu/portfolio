@@ -56,7 +56,11 @@ h2{font-size:clamp(32px,5vw,48px);margin-bottom:8px}
 .gallery{columns:3 260px;column-gap:16px}
 .gallery figure{margin:0 0 16px;break-inside:avoid}
 .gallery img{width:100%;height:auto;background:var(--plate);cursor:zoom-in}
-.gallery figcaption{font-size:13px;color:var(--dim);margin-top:6px}
+.gallery{columns:2 320px;column-gap:28px}
+.gallery figure{margin-bottom:40px}
+.gallery figcaption{display:flex;flex-direction:column;gap:4px;margin-top:12px}
+.gallery .ptitle{font-family:var(--serif);font-size:24px;line-height:1.2;color:var(--fg)}
+.gallery .ptext{font-size:14px;line-height:1.6;color:var(--dim);max-width:52ch}
 .empty{border:1px dashed var(--line);padding:40px 24px;text-align:center;color:var(--dim)}
 
 /* tables / lists */
@@ -133,7 +137,7 @@ footer{padding:32px 0 48px;color:var(--dim);font-size:13px}
 
   <section id="gallery"><div class="wrap">
     <h2>Gallery</h2>
-    <p class="sub">Photographs I've made during the course, newest first. Click any one to see it larger.</p>
+    <p class="sub">Photographs I've taken, newest first. Click any one to see it larger.</p>
     <div id="galleryGrid"></div>
   </div></section>
 
@@ -181,7 +185,18 @@ const SITE = {
 
   /* GALLERY: newest first. Put files in images/gallery/ */
   gallery: [
-    { src: "images/gallery/2026-10-weekend-vegetable-stall.jpg", caption: "Vegetable seller at her stall, October 2026. Shot on my own time over the weekend." },
+    {
+      src: "images/gallery/2026-10-weekend-vegetable-stall.jpg",
+      title: "What the Typhoon Couldn't Take",
+      date: "October 2026 · Weekend market",
+      text: "A farmer selling her vegetables at a weekend market. Much of her harvest was damaged by the severe typhoon earlier this year, but she was still at her stall, selling what survived. Shot on my own time over the weekend."
+    },
+    {
+      src: "images/gallery/2026-09-igem-outreach-app.jpg",
+      title: "The Field in Your Pocket",
+      date: "September 2026 · iGEM outreach",
+      text: "From our iGEM team's outreach event. We designed 農友助手 (Farmers' Assistant), an app that helps farmers keep track of the stress their crops go through."
+    }
   ],
 
   course: [
@@ -267,8 +282,12 @@ $("learner").innerHTML = txt(SITE.learner);
 
 $("galleryGrid").innerHTML = SITE.gallery.length
   ? `<div class="gallery">${SITE.gallery.map(p => `
-      <figure><img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy" data-cap="${esc(p.caption)}">
-      ${p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}</figure>`).join("")}</div>`
+      <figure><img src="${esc(p.src)}" alt="${esc(p.title)}" loading="lazy" data-cap="${esc([p.title, p.date].filter(Boolean).join(" · "))}">
+        <figcaption>
+          ${p.date ? `<span class="label">${esc(p.date)}</span>` : ""}
+          ${p.title ? `<span class="ptitle">${esc(p.title)}</span>` : ""}
+          ${p.text ? `<span class="ptext">${esc(p.text)}</span>` : ""}
+        </figcaption></figure>`).join("")}</div>`
   : `<div class="empty">First photographs coming soon.</div>`;
 
 $("courseRows").innerHTML = SITE.course.map(c => `
