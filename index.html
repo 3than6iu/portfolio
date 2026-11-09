@@ -48,6 +48,16 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
 h1{font-size:clamp(44px,8vw,84px)}
 h2{font-size:clamp(32px,5vw,48px);margin-bottom:8px}
 .sub{color:var(--dim);margin:0 0 32px;max-width:60ch}
+
+/* home: photo mosaic behind the name */
+.hero{position:relative;overflow:hidden;min-height:min(78vh,720px);display:flex;align-items:flex-end}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero-bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(var(--cols,3),1fr);grid-auto-rows:50%;gap:3px;opacity:.8}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.9)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,13,11,.7) 0%,rgba(14,13,11,.3) 55%,rgba(14,13,11,.1) 100%),linear-gradient(180deg,rgba(14,13,11,0) 40%,var(--bg) 100%)}
+.hero .sub{color:#c9c3b6}
+.hero h1,.hero .lead{text-shadow:0 2px 24px rgba(0,0,0,.6)}
+@media (max-width:760px){.hero-bg{grid-template-columns:repeat(2,1fr);grid-auto-rows:33.34%}}
 .lead{font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);line-height:1.4;max-width:40ch;margin:20px 0 0}
 .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .todo{color:#d6a35c}
@@ -130,7 +140,7 @@ footer{padding:32px 0 48px;color:var(--dim);font-size:13px}
 </header>
 
 <main>
-  <section id="home"><div class="wrap">
+  <section id="home" class="hero"><div class="hero-bg" id="heroBg" aria-hidden="true"></div><div class="wrap">
     <p class="label">Virtual Learning &amp; Development &middot; 2026&ndash;27</p>
     <h1>Ethan Liu</h1>
     <p class="lead" id="intro"></p>
@@ -332,6 +342,13 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&l
 const txt = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="todo">[$1]</span>');
 const $ = id => document.getElementById(id);
 
+/* homepage background: newest gallery photos as tiles (2 rows; 4 columns once there are 8+ photos) */
+const tiles = SITE.gallery.map(p => p.src);
+const nTiles = tiles.length >= 8 ? 8 : 6;
+$("heroBg").style.setProperty("--cols", nTiles / 2);
+$("heroBg").innerHTML = tiles.length
+  ? Array.from({ length: nTiles }, (_, i) => `<img src="${esc(tiles[i % tiles.length])}" alt="" loading="eager">`).join("")
+  : "";
 $("intro").innerHTML = txt(SITE.intro);
 $("learner").innerHTML = txt(SITE.learner);
 
