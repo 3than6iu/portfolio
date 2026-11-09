@@ -53,11 +53,10 @@ h2{font-size:clamp(32px,5vw,48px);margin-bottom:8px}
 .todo{color:#d6a35c}
 
 /* gallery */
-.gallery{columns:3 260px;column-gap:16px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:40px 24px;align-items:start}
 .gallery figure{margin:0 0 16px;break-inside:avoid}
 .gallery img{width:100%;height:auto;background:var(--plate);cursor:zoom-in}
-.gallery{columns:2 320px;column-gap:28px}
-.gallery figure{margin-bottom:40px}
+.gallery figure{margin:0}
 .gallery figcaption{display:flex;flex-direction:column;gap:4px;margin-top:12px}
 .gallery .ptitle{font-family:var(--serif);font-size:24px;line-height:1.2;color:var(--fg)}
 .gallery .ptext{font-size:14px;line-height:1.6;color:var(--dim);max-width:52ch}
@@ -189,6 +188,30 @@ const SITE = {
   /* GALLERY: newest first. Put files in images/gallery/ */
   gallery: [
     {
+      src: "images/gallery/2026-11-05-tulips-candlestick.jpg",
+      title: "Still Life, After Dark",
+      date: "5 November 2026 · Still life",
+      text: "Tulips, a brass candlestick and a folded letter, lit by a single warm lamp. I kept almost everything in shadow so the light only lands on what matters."
+    },
+    {
+      src: "images/gallery/2026-11-05-tulips-frame.jpg",
+      title: "Laid Down",
+      date: "5 November 2026 · Still life",
+      text: "The same tulips, taken out of the vase and laid on the table beside an old frame. Out of water, they look like they're already starting to fade, which is what drew me to the shot."
+    },
+    {
+      src: "images/gallery/2026-11-05-tulips-dark.jpg",
+      title: "Out of the Dark",
+      date: "5 November 2026 · Still life",
+      text: "A closer, darker version of the bouquet. With the background almost black, the pink petals are the only thing left to look at."
+    },
+    {
+      src: "images/gallery/2026-10-15-archway.jpg",
+      title: "Where the Arches Open",
+      date: "15 October 2026 · Canon EOS 5D Mark III",
+      text: "A lone figure at the end of a covered walkway, looking out at the hills. The dark interior and the lines of the floor tiles lead the eye straight to the one bright opening."
+    },
+    {
       src: "images/gallery/2026-10-weekend-vegetable-stall.jpg",
       title: "What the Typhoon Couldn't Take",
       date: "October 2026 · Weekend market",
@@ -207,7 +230,7 @@ const SITE = {
       course: "Street Photography: Foundations & Creative Mindsets (Course 1 of 3, Street Photography Specialization)",
       provider: "Coursera",
       approved: "21 Sep 2026",
-      progress: "In progress: Module 1",
+      progress: "In progress",
       switches: "None"
     }
   ],
@@ -215,6 +238,26 @@ const SITE = {
   /* JOURNAL: newest first. score = my self-score (100 / 89 / 79 / 69);
      teacher = ManageBac score once posted, null until then.          */
   journal: [
+    {
+      date: "9 Nov 2026",
+      course: "Street Photography Specialization, editing tools",
+      score: 89,
+      teacher: null,
+      images: [
+        { src: "images/journal/2026-11-09-1.jpg", caption: "Adobe Creative Cloud, newly installed: Photoshop, Lightroom, Firefly and Express." },
+        { src: "images/journal/2026-11-09-2.jpg", caption: "Behind the scenes of the 5 November still-life shoot: one warm lamp and black boards to control the light." }
+      ],
+      photos: [
+        { src: "images/gallery/2026-11-05-tulips-candlestick.jpg", caption: "Still life, 5 Nov 2026" },
+        { src: "images/gallery/2026-11-05-tulips-frame.jpg", caption: "Still life, 5 Nov 2026" },
+        { src: "images/gallery/2026-11-05-tulips-dark.jpg", caption: "Still life, 5 Nov 2026" },
+        { src: "images/gallery/2026-10-15-archway.jpg", caption: "Archway, 15 Oct 2026" }
+      ],
+      worked: "I bought Adobe Creative Cloud with my own money and started learning the apps I'll actually use for photography: Lightroom for editing and organising my photos, and Photoshop for retouching. Most of today was getting set up and finding my way around the interface and its quick-start tools. I also chose four photos for the gallery: three tulip still lifes from a shoot on 5 November, and an archway shot from 15 October.",
+      hard: "Adobe has a lot of apps (Photoshop, Lightroom, Firefly, Express and more), and at first I didn't know which ones I needed or where to begin. Instead of trying to learn all of them, I narrowed it down to Lightroom and Photoshop, the two that matter for photography, and left the rest for later.",
+      ran: "89. I invested in my own photography by buying the software, and I started learning it without being told to. Not 100, because today was mostly setup and exploring: I haven't finished an edit I'm proud of yet.",
+      next: "Edit one photo from start to finish in Lightroom, probably the archway shot, and put the before and after side by side in my next entry, so it shows real progress instead of just a screenshot of the app."
+    },
     {
       date: "12 Oct 2026",
       course: "Street Photography: Foundations & Creative Mindsets, personal website",
